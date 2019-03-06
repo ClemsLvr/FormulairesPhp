@@ -35,7 +35,7 @@
             margin-top: 25px;
             border: 1px solid;
             background-color: #80b8f1;
-            height: 500px;
+            height: 600px;
         }
         
         label{
@@ -78,15 +78,18 @@
           <input type="text" name="nom" id="nom" placeholder = "Ex : Dupont"/>
           
           <label for= "adresse">Votre adresse :</label>
-          <textarea name="adresse" id="adresse" rows="6" cols="50">
-          </textarea>
+<textarea placeholder="Ex : 6 rue du Pont
+84000 AVIGNON" 
+         name="adresse" id="adresse"  rows="6" cols="50" >
+</textarea>
           
           <label for= "description">Description :</label>
-          <textarea name="description" id="description" rows="6" cols="50">
-          </textarea>
+<textarea placeholder="Ex : Je souhaite installer une climatisation." 
+         name="description" id="description"  rows="6" cols="50">
+</textarea>
           
           <label for= "Prix unitaire">Prix unitaire (en €) : </label>
-          <input type="number" name="prix" id="prix" min= "0" step="0.01"/>
+          <input type="number" name="prix" id="prix" placeholder=" Ex: 555.05" min= "0" step="0.01"/>
           
            <label for= "tva">TVA : </label>
            <select name="tva" id="tva">
