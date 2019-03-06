@@ -1,3 +1,9 @@
+ <?php
+ 
+ $prenom= "Clém";
+
+ ?> 
+
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -18,14 +24,14 @@
         }
         
         .intro{
-            padding-left: 15px;
+            padding: 5px;
             margin-top: 25px;
             border: 1px solid;
             background-color: #80b8f1;
         }
         
         .form{
-            padding-left: 15px;
+            padding: 5px;
             margin-top: 25px;
             border: 1px solid;
             background-color: #80b8f1;
@@ -47,10 +53,8 @@
   <div class="entete">
      
      <?php
-    
-    $prenom= "Clém";
         
-    echo "<h1>Bonjour $prenom</h1>";
+    echo "<h1>Bonjour " . $prenom . "</h1>";
   
     ?>
   
@@ -62,7 +66,7 @@
       
   <div class="form">  
             
-         <form method="post" action="traitement.php">
+         <form method="post">
           
           <p>
           
