@@ -10,6 +10,7 @@
             width: 75%;
             margin: auto;
         }
+        
         .entete{
             border: 1px solid;
             text-align:center;
@@ -17,16 +18,23 @@
         }
         
         .intro{
+            padding-left: 15px;
             margin-top: 25px;
             border: 1px solid;
             background-color: #80b8f1;
         }
         
         .form{
+            padding-left: 15px;
             margin-top: 25px;
             border: 1px solid;
             background-color: #80b8f1;
             height: 500px;
+        }
+        
+        label{
+            padding-bottom: 8px;
+            display: block;
         }
         
     
@@ -35,8 +43,17 @@
 
 <body>
   
+        
   <div class="entete">
-      <h1>Bonjour $prenom</h1>
+     
+     <?php
+    
+    $prenom= "Clém";
+        
+    echo "<h1>Bonjour $prenom</h1>";
+  
+    ?>
+  
   </div>
   
   <div class="intro">
@@ -59,3 +76,4 @@
     
 </body>
 </html>
+
