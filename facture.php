@@ -1,49 +1,38 @@
 <?php
 
-//tests de $_POST et redirection vers le formulaire
+// à retenir var_dump($_POST); die(); pour afficher les infos de la $
+
+    
+    $champs = ["nom","adresse","description","prix","tva"];
+// => array('nom', 'adresse', 'description','prix', 'tva');
+
+    function checkFormlsValid($champs) 
+//($champs)= les paramètres
+//on définit d'abord la variable
+    {
+        foreach($champs as $element) 
+//foreach (pour chaque) boucle qui va prendre chaque $champs du tableau
+        {
+            if (empty($_POST[$element]) or !isset($_POST[$element]))
 //utilisation de empty afin de test si la $ est vide
 //utilisation de isset affin de test si la $ est définie !!erreur commise: oubli de ! devant isset donc mauvaise interprétation
-//(on veut pour la cond que la $ soit vide ou non set)
-//header renvoie au formulaire si les deux cond sont ok
+//(on veut pour la cond que la $ soit vide or non set)
+            {
+               header('location: /SmartServices/FormulairesPhp/index.php');
+//header renvoie au formulaire si les deux cond sont vérifiées
 //ne pas oublier 'location:...'
-
-   if (empty($_POST['nom']) or !isset($_POST['nom']))    
-    {
-        header('location: /SmartServices/FormulairesPhp/index.php');
-    }
- 
-
-    if (empty($_POST['adresse']) or !isset($_POST['adresse']))   
-    {
-        header('location: /SmartServices/FormulairesPhp/index.php');
+            }
+        }
     }
 
+    checkFormlsValid($champs);
+//ne pas oublier d'appeler la variable préalablement définie
 
-   if (empty($_POST['description']) or !isset($_POST['description']))   
-    {
-        header('location: /SmartServices/FormulairesPhp/index.php');
-    }
-
-    if (empty($_POST['prix']) or !isset($_POST['prix']))   
-    {
-        header('location: /SmartServices/FormulairesPhp/index.php');
-    }
-
-
-    if (empty($_POST['tva']) or !isset($_POST['tva']))   
-    {
-        header('location: /SmartServices/FormulairesPhp/index.php');
-    }
-
-//affichage des données avec concaténation
-    
-        echo '<p>Vous êtes ' . $_POST['nom'] . '</p>', 
+    echo '<p>Vous êtes ' . $_POST['nom'] . '</p>', 
             '<p>Vous habitez ' . $_POST['adresse'] . '</p>',
             '<p>Vous souhaitez ' . $_POST['description'] . '</p>',
             '<p>Le prix unitaire :' . $_POST['prix'] . '</p>', 
-            '<p> La TVA : ' . $_POST['tva'] . '</p>'; 
+            '<p> La TVA : ' . $_POST['tva'] . '</p>';
 
 
-?> 
-
-
+?>
