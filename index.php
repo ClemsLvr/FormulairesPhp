@@ -70,7 +70,7 @@
       
   <div class="form">  
             
-         <form method="post">
+         <form method="POST" action="facture.php">
           
           <p>
           
