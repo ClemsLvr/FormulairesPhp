@@ -70,9 +70,12 @@
       
   <div class="form">  
             
-         <form method="POST" action="facture.php">
+         <form method="POST" action="facture.php" enctype="multipart/form-data">
           
           <p>
+          
+          <label for= "logo">Votre logo (JPG, PNG ou GIF | max.1 Mo)</label>
+          <input type="file" name="logo" id="logo"/>
           
           <label for ="nom">Votre nom : </label>
           <input type="text" name="nom" id="nom" placeholder = "Ex : Dupont"/>
