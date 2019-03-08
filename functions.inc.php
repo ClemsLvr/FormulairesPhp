@@ -1,5 +1,8 @@
 <?php
 
+$champs = ["nom","adresse","description","prix","tva"];
+// => array('nom', 'adresse', 'description','prix', 'tva');
+
 function checkFormlsValid($champs) 
 //($champs)= les paramètres
 //on définit d'abord la variable
