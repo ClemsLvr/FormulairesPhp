@@ -2,12 +2,8 @@
 
 require ('functions.inc.php');
 //on a sorti les fonctions 
-
-    echo'<img src= "upload/' . $_FILES['logo']['name'] . '"/>';
-
-
-    echo  uploadFile($uploads_dir, $_FILES['logo']['name'], $_FILES['logo']['tmp_name']),
-        
+      
+    echo   '<img src= "upload/' . $_FILES['logo']['name'] . '"/>',
         
         '<p>Vous êtes ' . $_POST['nom'] . '</p>',
 
