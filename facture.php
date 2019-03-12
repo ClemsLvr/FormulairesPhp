@@ -5,7 +5,7 @@ require ('functions.inc.php');
       
     echo   '<img src= "upload/' . $_FILES['logo']['name'] . '"/>',
         
-        '<p>Vous êtes ' . $_POST['nom'] . '</p>',
+            '<p>Vous êtes ' . $_POST['nom'] . '</p>',
 
             '<p>Vous habitez ' . $_POST['adresse'] . '</p>',
 
