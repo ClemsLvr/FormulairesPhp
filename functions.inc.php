@@ -1,22 +1,19 @@
 <?php
 
-
-$uploads_dir = './upload/';
-//indique la direction depuis l'emplacement actuel, selon l'emplacement ne pas oublier le . devant
-$name=$_FILES['logo']['name'];
-$tmp_name=$_FILES['logo']['tmp_name'];
-
+//Création de la fonction avec les paramètres
 function uploadFile($uploads_dir, $name, $tmp_name)
-{
-  move_uploaded_file($tmp_name, $uploads_dir . $name);
+    {
+    $status = move_uploaded_file($tmp_name, $uploads_dir . $name);
+    
+    if(!$status) {
+       header('Location: /SmartServices/FormulairesPhp/index.php');
+    }
+   }
 
-    echo'<img src= "upload/' . $_FILES['logo']['name'] . '"/>';   
-}
+//Appel de la fonction avec les paramètres souhaités (dans l'odre défini au dessus)*/
+ uploadFile('./upload/', $_FILES['logo']['name'], $_FILES['logo']['tmp_name']);
   
-uploadFile($uploads_dir, $_FILES['logo']['name'], $_FILES['logo']['tmp_name']);
-
-
-
+  
 $champs = ["nom","adresse","description","prix","tva"];
 // => array('nom', 'adresse', 'description','prix', 'tva');
 
