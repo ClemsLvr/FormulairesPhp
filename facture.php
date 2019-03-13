@@ -1,7 +1,18 @@
 <?php
 
 require ('functions.inc.php');
-//on a sorti les fonctions 
+//appel du fichiers avec les fonctions 
+
+
+//Appel de la fonction avec les paramètres souhaités
+ uploadFile($_FILES['logo']['name'], $_FILES['logo']['tmp_name']);
+  
+  
+$champs = ["nom","adresse","description","prix","tva"];
+// => array('nom', 'adresse', 'description','prix', 'tva');
+
+ checkFormlsValid($champs);
+//ne pas oublier d'appeler la variable préalablement définie
       
     echo   '<img src= "upload/' . $_FILES['logo']['name'] . '"/>',
         
