@@ -1,21 +1,22 @@
 <?php
 
+
 //Création de la fonction avec les paramètres
-function uploadFile($uploads_dir, $name, $tmp_name)
+function uploadFile($name, $tmp_name)
     {
-    $status = move_uploaded_file($tmp_name, $uploads_dir . $name);
+    $uploads_dir= './upload/' . $name;
+    $status = move_uploaded_file($tmp_name, $uploads_dir);
     
     if(!$status) {
        header('Location: /SmartServices/FormulairesPhp/index.php');
     }
    }
 
-//Appel de la fonction avec les paramètres souhaités (dans l'odre défini au dessus)*/
- uploadFile('./upload/', $_FILES['logo']['name'], $_FILES['logo']['tmp_name']);
-  
-  
-$champs = ["nom","adresse","description","prix","tva"];
-// => array('nom', 'adresse', 'description','prix', 'tva');
+if (!isset($_FILES['logo']['name']) or empty($_FILES['logo']['name']))
+    {
+      header('Location: /SmartServices/FormulairesPhp/index.php');
+    }
+
 
 function checkFormlsValid($champs) 
 //($champs)= les paramètres
@@ -35,9 +36,6 @@ function checkFormlsValid($champs)
             }
         }
     }
-
-    checkFormlsValid($champs);
-//ne pas oublier d'appeler la variable préalablement définie
 
     function ttcPrice($prix, $tva)
     {
