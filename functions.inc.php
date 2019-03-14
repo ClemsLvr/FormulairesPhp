@@ -12,11 +12,6 @@ function uploadFile($name, $tmp_name)
     }
    }
 
-if (!isset($_FILES['logo']['name']) or empty($_FILES['logo']['name']))
-    {
-      header('Location: /SmartServices/FormulairesPhp/index.php');
-    }
-
 
 function checkFormlsValid($champs) 
 //($champs)= les paramètres
