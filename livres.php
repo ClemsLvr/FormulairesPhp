@@ -1,5 +1,7 @@
 <?php
 
+require ('functions.inc.php');
+
 try
 {
     //on se connecte à MySQL
@@ -15,7 +17,7 @@ catch (Exception $e)
 
 $reponse= $bdd->query('SELECT * FROM livres');
 
-while ($donnees = $reponse->fetch())
+while ($row = $reponse->fetch())
 {
 ?>
  
@@ -56,18 +58,18 @@ while ($donnees = $reponse->fetch())
        </tr>
        
        <tr>
-           <td><?php echo $donnees['id'];?></td>
-           <td><?php echo $donnees['titre'];?></td>
-           <td><?php echo $donnees['pv_ht'];?></td>
-           <td><?php echo $donnees['tva'];?></td>
-           <td><?php echo $donnees['description'];?></td>
-           <td><?php echo $donnees['image'];?></td>
+           <td><?php echo $row['id'];?></td>
+           <td><?php echo $row['titre'];?></td>
+           <td><?php echo $row['pv_ht'];?></td>
+           <td><?php echo $row['tva'];?></td>
+           <td><?php echo $row['description'];?></td>
+           <td><?php echo $row['image'];?></td>
            <td><?php 
- if (($donnees['stock']) == 0)
+ if (($row['stock']) == 0)
 {
     echo '<p class="epuise">stock épuisé</p>'; 
 }
- elseif (($donnees['stock']) <5)
+ elseif (($row['stock']) <5)
 {
     echo '<p class="derniers">Derniers livres disponibles</p>';
 }
@@ -80,12 +82,12 @@ else
       
       <td><?php 
  
-        function pv_ttc($ht, $tva)
+        /*function pv_ttc($ht, $tva)
     {
         return $ht*(1+($tva/100));
-    }
+    }*/
  
-        echo pv_ttc($donnees['pv_ht'],$donnees['tva']);
+        echo ttcPrice($row['pv_ht'],$row['tva']);
         ?>  
           
       </td>
