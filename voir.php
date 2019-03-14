@@ -11,51 +11,32 @@ catch (Exception $e)
 {
     //En cas d'erreur, on affiche un msg et on arrête tout
         die('Erreur : ' . $e->getMessage());
-}//si rien ne s'affiche tout va bien et on peut continuer, sinon vérifier les infos
-
-
-//delete 
-if (isset($_GET["del"])) 
-{
-    $del= $bdd->prepare('DELETE FROM livres WHERE id=?');
-    $del->execute([$_GET['del']]);
-    header('location: /SmartServices/FormulairesPhp/livres.php');
 }
 
+//si rien ne s'affiche tout va bien et on peut continuer, sinon vérifier les infos
 
-//on fait la requête SQL
-$reponse= $bdd->query('SELECT * FROM livres');
+//on prepare la requête SQL
+$req= $bdd->prepare('SELECT * FROM livres WHERE id= ?');
 
-//on fait une boucle pour lire les éléments 1 à 1
-while ($row = $reponse->fetch())
-{
+//on exécute la requête SQL 
+$req->execute([$_GET['id']]);
+
+$row = $req->fetch();
+
 ?>
- 
-  <style>
-      
-      table
-      {
-          border: 1px solid;
-      }
-      
-      .epuise
-      {
-          background-color: red;
-      }
-      
-      .derniers
-      {
-          background-color: orange;
-      }
-      
-      .dispo
-      {
-          background-color: lightgreen;
-      }
+
+<style>
+    td
+    {
+        border: 1px solid;
+        text-align: center;
+    }
 
 </style>
-  
-   <table>
+
+<table>
+     <table>
+      <caption>Voici les détails de votre livre</caption>
        <tr>
            <td>id</td>
            <td>titre</td>
@@ -65,7 +46,6 @@ while ($row = $reponse->fetch())
            <td>image</td>
            <td>stock</td>
            <td>prix ttc</td>
-           
            
        </tr>
        
@@ -91,35 +71,11 @@ else
 }
  
     ?></td>
-      
-      <td><?php 
- 
-        /*function pv_ttc($ht, $tva)
-    {
-        return $ht*(1+($tva/100));
-    }*/
- 
+           <td><?php 
+               
         echo ttcPrice($row['pv_ht'],$row['tva']);
-        ?>  
-          
-      </td>
-      <td>
-          <a href="voir.php?id=<?php echo $row['id']; ?>">Détails</a> 
-          
-      </td>
-      <td>
-        
-          <a href="livres.php?del=<?php echo $row['id']; ?>">Suppr</a>
+        ?></td>
            
-      </td>
        </tr>
-   </table> 
-<?php
-}
-
-$reponse->closeCursor();
- 
-
- 
- 
-?>
+    
+</table>
