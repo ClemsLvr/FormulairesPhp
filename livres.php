@@ -15,8 +15,10 @@ catch (Exception $e)
 
 //si rien ne s'affiche tout va bien et on peut continuer, sinon vérifier les infos
 
+//on fait la requête SQL
 $reponse= $bdd->query('SELECT * FROM livres');
 
+//on fait une boucle pour lire les éléments 1 à 1
 while ($row = $reponse->fetch())
 {
 ?>
