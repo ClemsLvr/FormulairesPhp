@@ -18,7 +18,32 @@ $reponse= $bdd->query('SELECT * FROM livres');
 while ($donnees = $reponse->fetch())
 {
 ?>
-   <table style="border:1px solid">
+ 
+  <style>
+      
+      table
+      {
+          border: 1px solid;
+      }
+      
+      .epuise
+      {
+          background-color: red;
+      }
+      
+      .derniers
+      {
+          background-color: orange;
+      }
+      
+      .dispo
+      {
+          background-color: lightgreen;
+      }
+
+</style>
+  
+   <table>
        <tr>
            <td>id</td>
            <td>titre</td>
@@ -27,6 +52,7 @@ while ($donnees = $reponse->fetch())
            <td>description</td>
            <td>image</td>
            <td>stock</td>
+           <td>prix ttc</td>
        </tr>
        
        <tr>
@@ -39,17 +65,30 @@ while ($donnees = $reponse->fetch())
            <td><?php 
  if (($donnees['stock']) == 0)
 {
-    echo "stock épuisé"; 
+    echo '<p class="epuise">stock épuisé</p>'; 
 }
  elseif (($donnees['stock']) <5)
 {
-    echo "Derniers livres disponibles";
+    echo '<p class="derniers">Derniers livres disponibles</p>';
 }
 else
 {
-    echo "Disponible";
+    echo '<p class="dispo">Disponible</p>';
 }
+ 
     ?></td>
+      
+      <td><?php 
+ 
+        function pv_ttc($ht, $tva)
+    {
+        return $ht*(1+($tva/100));
+    }
+ 
+        echo pv_ttc($donnees['pv_ht'],$donnees['tva']);
+        ?>  
+          
+      </td>
        </tr>
    </table> 
 <?php
