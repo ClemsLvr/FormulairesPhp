@@ -3,7 +3,10 @@
 require ('functions.inc.php');
 //appel du fichiers avec les fonctions 
 
-
+if (!isset($_FILES['logo']['name']) or empty($_FILES['logo']['name']))
+    {
+      header('Location: /SmartServices/FormulairesPhp/index.php');
+    
 //Appel de la fonction avec les paramètres souhaités
  uploadFile($_FILES['logo']['name'], $_FILES['logo']['tmp_name']);
   
